@@ -72,9 +72,10 @@ footer{
 /* want a different background image for each project? */
 /* try give each a tag a unique id in your HTML and then set different background images here*/
 /* EXAMPLE CSS: won't work if you just un-comment this:*/
-/* .flex-item a#my-special-id{
-    background-image: url(../assets/images/custom-image-name.jpeg); 
-} */
+
+.flex-item a#my-101{
+    background-image: url(../assets/images/galaxy.jpg); 
+}
 
 
 .flex-item a:hover{
