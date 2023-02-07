@@ -18,7 +18,7 @@ let button2;
 function Pressed(){
   if(c>0.9 && v>10){
   c-=0.01;
-  v-=5;
+  v-=10;
   }
   
 }
