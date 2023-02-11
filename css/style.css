@@ -2,8 +2,15 @@
 /*This is a comment in CSS*/
 
 body{
-    font-family: Verdana, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     margin: 0;
+}
+
+h{
+
+    font-size: 100px;
+    font-style: italic;
+    font-variant: small-caps;
 }
 
 h1{
@@ -11,20 +18,32 @@ h1{
     
 }
 
+h3{
+    font-size: 15px;
+    
+}
+
 p{
-    font-size: 16px;
+    font-size: 16x;
 }
 
 header{
-    padding:0 3%;
+    padding: 100px 3%;
+    
 }
+
+header YAG{
+    padding: 50px 3%;
+    
+}
+
 
 main{
     width:100%;
     max-width:1400px; /* means it won't be larger than 1200px on larger screens */
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 3%;
+    padding: 10%;
 
 }
 
@@ -40,7 +59,10 @@ footer{
 .flex-container{
     display: flex; /* all children will now be flex items */
     flex-direction: row; /* other option is column */
-    flex-wrap: wrap; /* means the children will wrap to a new line */
+    flex-wrap: wrap; 
+   
+    
+    /* means the children will wrap to a new line */
 }
 
 .flex-item{
@@ -51,6 +73,9 @@ footer{
     flex-basis: 25%; /*width of the box, take up a quarter of the parent's size*/
     box-sizing: border-box; /*this means that we can add padding, line below, and still only take 25% width of parent*/
     padding: 5px;
+   
+    
+    
 }
 
 .flex-item a{
@@ -65,8 +90,13 @@ footer{
     align-items: center;
     text-align: center;
     text-decoration: none;
-    color:#4f4f4f;
-    transition: all 0.2s; /* CSS transitions https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions */
+    color:#212121;
+    transition: all 0.2s; 
+    border-radius: 10px;
+    text-shadow: #212121;
+    
+    
+    /* CSS transitions https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions */
 }
 
 /* want a different background image for each project? */
@@ -74,20 +104,48 @@ footer{
 /* EXAMPLE CSS: won't work if you just un-comment this:*/
 
 .flex-item a#my-101{
-    background-image: url(../assets/images/galaxy.jpg); 
+   
+    background-image: url(../assets/images/galaxy.png); 
 }
+
+.flex-item a#my-102{
+   
+    background-image: url(../assets/images/come\ here.png); 
+} 
+.flex-item a#my-103{
+   
+    background-image: url(../assets/images/YAG.png); 
+    
+} 
+
+.flex-item a#my-201{
+   
+    background-image: url(../assets/images/GT.png); 
+    
+} 
+
+.flex-item a#my-202{
+   
+    background-image: url(../assets/images/MNERVOUS.png); 
+    
+} 
+
 
 
 .flex-item a:hover{
-    color:#bbbbbb;
+    
+    color:#ffffff;
     background-size: 120%;
+    background-color: black;
+
+
 }
 
-.flex-item h4{
-   margin:10px;
-   background-color: white;
-   padding:5px 10px;
-}
+/*.flex-item h4{
+   margin:0px;
+   background-color: rgb(94, 94, 94);
+   
+   padding:1px 0px;
 
 
 /* Media Queries for responsive design */
@@ -101,15 +159,15 @@ footer{
     } */
 
     .flex-item{
-        flex-basis: 33.33%; /*width of the box, take up a quarter of the parent's size*/
+        flex-basis: 133.33%; /*width of the box, take up a quarter of the parent's size*/
     }
 }
 
 /* Large */
 @media screen and (max-width: 992px) {
-    /* body {
-      background-color: rgb(255, 81, 0);
-    } */
+    body {
+      background-color: rgb(255, 255, 255);
+    } 
 
 }
 
