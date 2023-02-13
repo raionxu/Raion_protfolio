@@ -43,7 +43,7 @@ function draw() {
     textAlign(CENTER);
 
    
-    text(displayText,windowWidth/2,200, 1200);
+    text(displayText,windowWidth/4,200, windowWidth/2);
 
   }
 
