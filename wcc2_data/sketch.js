@@ -1,155 +1,59 @@
+let img;
 
-let loadbar = 0;
-let failedLoads = [];
-let jsonDocuments = [
-  "./json/Dickens.json",
-   "./NotARealJsonFile.json", //note p5 editor handles errors weirdly here
-  "./json/Short1.json"
-];
+let mySeed;
 
-let canvas;
-let files = [];
-let displayText = "";
-
-//data structure
-// for cut up generator
-let phrases = [];
-
+function preload(){
+	let url = 'https://picsum.photos/1920/1080';
+	img = loadImage(url);
+}
 
 function setup() {
-  canvas = createCanvas(500, 500);
-  canvas.parent("sketch-container"); //move our canvas inside this HTML element
-  canvas.mousePressed(handleCanvasPressed);
-
-  loadFile(0);
+	var cnv = createCanvas(windowWidth,windowHeight);
+  cnv.style('display', 'block')
+	mySeed = floor(random(1,100000));
+ 
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+
 
 function draw() {
-  background(200);
+	image(img,0,0);
+  randomSeed(mySeed);
+	recursiveText(random(width),random(height),2*width, 7);
+}
 
-  if(loadbar < jsonDocuments.length){
-
-    let barLength = width*0.5;
-    let length = map(loadbar,0,jsonDocuments.length,barLength/jsonDocuments.length,barLength);
-    rect(width*0.25,height*0.5,length,20);
-
-  }else{
-
-    let fontSize = map(displayText.length,0,200,30,20,true);
-    textSize(fontSize);
-    textWrap(WORD);
-    textAlign(CENTER);
-    text(displayText,50, 50, 400);
-
-  }
+function recursiveText(x,y,mySize,level)
+{
+  level -= 1;
+	strokeWeight(0.5);
+	fill(img.get(floor(x),floor(y)));
+	drawText(x,y,mySize/3)
+	if (level >= 0)
+	{
+	  recursiveText(x/2,y/2,mySize/2,level);
+		recursiveText(x/2 + width/2,y/2,mySize/2,level);
+		recursiveText(x/2,y/2 + height/2,mySize/2,level);
+		recursiveText(x/2 + width/2,y/2 + height/2,mySize/2,level);
+	}
 
 }
 
-function handleCanvasPressed(){
-  //original text
-  displayText = "Don't show this boring sentence, generate some text instead!";
-
-  //generate cut up phrases
-
-  displayText = generateCutUpPhrases(3);
-
-  //show text in HTML
-  showText(displayText);
-
-}
-
-function buildModel(){
-  console.log("run buildModel()");
-
-  //create and store phrases
-  
-  for(let i = 0; i < files.length; i++){
-    
-    let text = files[i].text;
-    
-    // console.log(text);
-    
-    let textPhrases = text.split(/(?=[,.])/);
-    
-    for(let j = 0; j < textPhrases.length; j++){
-      let puntuationless = textPhrases[j].replace(/[^a-zA-Z- ']/g,"");
-      let lowerCase = puntuationless.toLowerCase();
-      let trimmed = lowerCase.trim();
-     // console.log(trimmed);
-      
-      phrases.push(trimmed);
-    }
-    
-    
-  }
-
-
-}
-
-//Text Generator Function ----------------------------------
-
-function generateCutUpPhrases(numPhrases){
-  let output = "";
-
-  //implement your code to generate the output
-  
-  for(let i = 0; i < numPhrases; i++){
-    let randomIndex = int(random(0,phrases.length));
-    let randomPhrase = phrases[randomIndex];
-    
-    output += randomPhrase + ". ";
-  }
-
-
-  return output;
+function drawText(x,y,mySize)
+{	
+	 textSize(mySize);
+	 if (random(0,1) > 0.5)
+	 {
+	   text(str(frameCount + floor(random(0,10000))),x,y);
+	 }else
+	 {
+		text(str(floor(random(0,10000))),x,y); 
+	 }
 }
 
 
-//Generic Helper functions ----------------------------------
+	
 
-function loadFile(index){
-
-  if(index < jsonDocuments.length){
-    let path = jsonDocuments[index]; 
-
-    fetch(path).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-    
-      console.log("Loaded File");
-      console.log(data);
-      files.push(data);
-
-      showText("Training text number " + (index+1));
-      showText(data.text);
-  
-      loadbar ++;
-      loadFile(index+1);
-  
-    }).catch(function(err) {
-      console.log(`Something went wrong: ${err}`);
-  
-      let failed = jsonDocuments.splice(index,1);
-      console.log(`Something went wrong with: ${failed}`);
-      failedLoads.push(failed);// keep track of what failed
-      loadFile(index); // we do not increase by 1 because we spliced the failed one out of our array
-
-    });
-  }else{
-    buildModel();//change this to whatever function you want to call on successful load of all texts
-  }
-
-}
-
-//add text as html element
-function showText(text){
-
-  let textContainer = select("#text-container");
-//  textContainer.elt.innerHTML = "";//add this in if you want to replace the text each time
-
-  let p = createP(text);
-  p.parent("text-container");
-
-}
-
-  
