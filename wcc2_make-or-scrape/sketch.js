@@ -17,7 +17,7 @@ let phrases = [];
 
 
 function setup() {
-  canvas = createCanvas(1600, 500);
+  canvas = createCanvas(windowWidth, 500);
   canvas.parent("sketch-container"); //move our canvas inside this HTML element
   canvas.mousePressed(handleCanvasPressed);
 
@@ -43,7 +43,7 @@ function draw() {
     textAlign(CENTER);
 
    
-    text(displayText,180,200, 1200);
+    text(displayText,windowWidth/2,200, 1200);
 
   }
 
