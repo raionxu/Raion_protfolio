@@ -7,7 +7,7 @@ function preload() {
   }
 
 function setup() {
-  createCanvas(800,800);
+	createCanvas(windowWidth, windowHeight);
 	angleMode(DEGREES)
 	colorMode(HSB, 360, 100, 100, 100);
 	noiseDetail(2,1)
@@ -43,7 +43,7 @@ function draw() {
 	circle(0,0,220)
 	
 	
-	if(mouseX>600 || mouseY>600 || mouseX<200 || mouseY<200)
+	if(!(mouseX > windowWidth / 2 - 100 && mouseX < windowWidth / 2 + 100 && mouseY > windowHeight / 2 - 100 && mouseY < windowHeight / 2 + 100))
         {
 			changecolor -=60
 		}
@@ -63,7 +63,7 @@ function draw() {
 		var g1 = map(h, -360,width,0,200)
 		var b1 = map(n,0,1,height,255)
 
-		if(mouseX>600 || mouseY>600 || mouseX<200 || mouseY<200)
+		if(!(mouseX > windowWidth / 2 - 100 && mouseX < windowWidth / 2 + 100 && mouseY > windowHeight / 2 - 100 && mouseY < windowHeight / 2 + 100))
         {
 			changecolor = 100
 			var r1 = map(sin(i)*3, -1, 1, 100, 200)

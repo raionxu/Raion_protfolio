@@ -32,7 +32,7 @@ class Particle{
     show(){
         noStroke()
         fill(this.r, this.g, this.b, this.alpha)
-        if(mouseX<600 && mouseY<600 && mouseX>200 && mouseY>50)
+        if(dist(mouseX, mouseY, width/2, height/2) < 100)
         {
         ellipse(this.pos.x, this.pos.y, this.size)
         }
