@@ -1,7 +1,18 @@
 
 /*This is a comment in CSS*/
 
-
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 0vh;
+  }
+  
+  .center-content h1, .center-content h3 {
+    margin: 10px 0;
+  }
 
 nav{
     padding:10px 3%;
@@ -9,13 +20,15 @@ nav{
 
 /* original aspect ratio width="640" height="360" */
 .responsive-video{
+    justify-content: center;
     position: relative;
-    width: 79%; /* adjust this and the padding-top to change how big it is*/
+    width: 100%; /* adjust this and the padding-top to change how big it is*/
     height: 0;
     padding-top: 45%; /* padding top is in reltation to the width of parent, it preserves aspect ratio*/
     /* margin: 0 auto; */ /*this would center your video in the section container*/
 }
 .responsive-video iframe{
+    justify-content: center;
     position: absolute;
     top:0;
     left:0;
@@ -25,10 +38,22 @@ nav{
 
 /*simple way to handle responsiveness, set a max-width and width 100% so if screen is smaller than 500px, image is 100% of that size */
 #striped-image{
+    
     width:100%;
     max-width:500px;
     height: auto;
 }
 
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .center-image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 
 /* you could add some media queries to make the video size look good on all screen sizes*/

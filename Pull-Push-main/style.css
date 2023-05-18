@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+h{
+
+  font-size: 60px;
+  font-style: italic;
+  font-variant: small-caps;
+}
